@@ -1,0 +1,1 @@
+Based on jonagh/gapi-querier

@@ -77,6 +77,12 @@ async function requestPagedRecursively(method, path, body, processResults, pageT
 				
 				count++;
 				
+				document.getElementById('loadingNumbers').innerHTML = '';
+				const span = document.createElement('span');
+				
+				span.innerHTML = `${count}`;
+				document.getElementById('loadingNumbers').appendChild(span);
+				
 				
 				//if (count < 5) {
 				return requestPagedRecursively(method, path, body, processResults, results.nextPageToken);
@@ -174,28 +180,6 @@ function createSaveLink(tableId) {
 
 export default [
 	{
-		name: 'Find out-of-album photos',
-		scopes: 'https://www.googleapis.com/auth/photoslibrary.readonly',
-
-		async run() {
-			console.log('findOutOfAlbumPhotos : running');
-			const output = await runAsync();
-			console.log('findOutOfAlbumPhotos : finished');
-			return output;
-		}
-	},
-	{
-		name: 'Find out-of-album photos (including "shared" albums)',
-		scopes: 'https://www.googleapis.com/auth/photoslibrary.readonly',
-
-		async run() {
-			console.log('findOutOfAlbumPhotos(w/shared) : running');
-			const output = await runAsync(true);
-			console.log('findOutOfAlbumPhotos(w/shared) : finished');
-			return output;
-		}
-	},
-	{
 		name: 'Random photos',
 		scopes: 'https://www.googleapis.com/auth/photoslibrary.readonly',
 
@@ -206,4 +190,16 @@ export default [
 			return output;
 		}
 	}
+	/*
+	{
+		name: 'Find out-of-album photos (including "shared" albums)',
+		scopes: 'https://www.googleapis.com/auth/photoslibrary.readonly',
+
+		async run() {
+			console.log('findOutOfAlbumPhotos(w/shared) : running');
+			const output = await runAsync(true);
+			console.log('findOutOfAlbumPhotos(w/shared) : finished');
+			return output;
+		}
+	}*/
 ]

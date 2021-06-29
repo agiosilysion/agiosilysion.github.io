@@ -20,6 +20,7 @@ ui.init((gapiClientId) => {
 });
 
 async function runCommand(selectedCommand) {
+	var count = 0;
   if (!selectedCommand.run || typeof selectedCommand.run !== 'function') {
     console.error(`run command failed: no run function for '${selectedCommand.name}'`);
     return;
